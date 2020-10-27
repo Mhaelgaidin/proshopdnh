@@ -43,7 +43,7 @@ const ProductListScreen = ({ history, match }) => {
     }
 
     if (successCreate) {
-      history.push(`/admin/products/${createdProduct._id}`)
+      history.push(`/admin/products/${createdProduct._id}/edit`)
     } else {
       dispatch(listProducts())
     }
@@ -107,7 +107,7 @@ const ProductListScreen = ({ history, match }) => {
                 <td>{product.category}</td>
                 <td>{product.brand}</td>
                 <td>
-                  <LinkContainer to={`/admin/product/${product._id}/edit`}>
+                  <LinkContainer to={`/admin/products/${product._id}/edit`}>
                     <Button variant='light' className='btn-sm'>
                       <i className='fas fa-edit'></i>
                     </Button>
