@@ -20,11 +20,10 @@ function checkFileType(file, cb) {
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
   const mimetype = filetypes.test(file.mimetype)
 
-  if (extname && mimetype) {
-    return cb(null, true)
-  } else {
-    cb('Images only!')
+  if (!extname && !mimetype) {
+    return cb(new Error('Only image upload is allowed'), false)
   }
+  cb(null, true)
 }
 
 const upload = multer({
